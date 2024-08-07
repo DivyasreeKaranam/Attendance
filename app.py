@@ -6,7 +6,7 @@ import logging
 import os
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"  # Replace with a strong secret key
+app.secret_key = os.environ.get('SECRET_KEY', 'fallback_secret_key')
 
 attendance_file = "attendance.xlsx"
 
@@ -188,4 +188,5 @@ def delete_attendance(id):
         return redirect(url_for("login"))
 
 if __name__ == "__main__":
-    app.run(debug=True)  # Set to False in production
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
