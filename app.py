@@ -10,7 +10,7 @@ app.secret_key = os.environ.get('SECRET_KEY', 'fallback_secret_key')
 
 attendance_file = "attendance.xlsx"
 
-# Configure logging
+# Configure logging to output to the console
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
